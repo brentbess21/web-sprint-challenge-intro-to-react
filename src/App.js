@@ -3,6 +3,7 @@ import axios from 'axios';
 import './App.css';
 
 import CharacterList from './components/CharacterList';
+import Search from './components/Search'
 
 const App = () => {
   // Try to think through what state you'll need for this app before starting. Then build out
@@ -13,6 +14,7 @@ const App = () => {
   // sync up with, if any.
 
   const [characterList, setCharacterList] = useState([])
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(()=>{
     axios.get("https://swapi.dev/api/people")
@@ -30,6 +32,7 @@ const App = () => {
 
   return (
     <div className="App">
+      <Search />
       <h1 className="Header">Star Wars Characters</h1>
       <CharacterList characterList={characterList}/>
     </div>
