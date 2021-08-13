@@ -1,6 +1,46 @@
 // Write your Character component here
 import React, { useState } from 'react';
-import { Button, Collapse } from 'reactstrap';
+import styled from 'styled-components';
+import { Collapse } from 'reactstrap';
+
+
+const StyledCard = styled.div `
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border: 2px solid black;
+    width: 50%;
+    height: 500px;
+    margin: 25px auto;
+    background-color: black;
+    color: white;
+
+    h3 {
+        font-size: 2.5rem;
+    }
+
+    button{
+        width: 220px;
+        font-family: 'Titillium Web', sans-serif;
+        padding: 10px 20px;
+        border:3px solid #ffe81f;
+        box-sizing: border-box;
+        text-decoration:none;
+        text-transform:uppercase;
+        color: white;
+        text-align:center;
+        transition: all 0.15s;
+        background-color: black;
+        }
+    button:hover{
+         color:#DDDDDD;
+         border-color:white;
+        background-color: black;
+        }
+
+`
+
 
 const Character = (props) => {
     const { character } = props
@@ -21,7 +61,7 @@ const toggle = () => setIsOpen(!isOpen);
 
    
     return (
-        <div>
+        <StyledCard>
             <h3>{character.name}</h3>
             <button  onClick={toggle} >More Info</button>
             <Collapse isOpen={isOpen}>
@@ -34,7 +74,7 @@ const toggle = () => setIsOpen(!isOpen);
                 <p>Weight: {kilosToPounds(character.mass)}</p>
             </div>
             </Collapse>
-        </div>
+        </StyledCard>
     )
 }
 
