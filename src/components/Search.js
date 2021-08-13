@@ -10,11 +10,12 @@ const StyledHeader = styled.div`
     }
 `
 const Search = (props) => {
-    const { setSearchTerm } = props;
+    const { setSearchTerm, setCharIndex } = props;
 
     const changeInput = event => {
         console.log("here is the search term" ,event.target.value);
         setSearchTerm(event.target.value);
+        setCharIndex(true);
     }
 
     return (

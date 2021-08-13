@@ -5,8 +5,8 @@ const CharacterList = (props) => {
     const { characterList } = props
     return (
         <div className ="characters-container">
-            <p>This is the Characters Container component</p>
-            {characterList.map(character => {
+            <h1>Character List</h1>
+            { characterList && characterList.map(character => {
                 return <Character character={character} />
             })}
         </div>

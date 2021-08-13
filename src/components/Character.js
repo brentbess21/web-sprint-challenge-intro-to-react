@@ -1,8 +1,12 @@
 // Write your Character component here
-import React from 'react';
+import React, { useState } from 'react';
+import { Button, Collapse } from 'reactstrap';
 
 const Character = (props) => {
     const { character } = props
+    const [isOpen, setIsOpen] = useState(false);
+
+const toggle = () => setIsOpen(!isOpen);
 
    const cmtoFeet = (cm) => {
        const inches = cm/2.54;
@@ -19,7 +23,8 @@ const Character = (props) => {
     return (
         <div>
             <h3>{character.name}</h3>
-            <button>More Information</button>
+            <button  onClick={toggle} >More Info</button>
+            <Collapse isOpen={isOpen}>
             <div className='character-data'>
                 <p>Birth Year: {character.birth_year}</p>
                 <p>Gender: {character.gender}</p>
@@ -28,6 +33,7 @@ const Character = (props) => {
                 <p>Height: {cmtoFeet(character.height)} </p>
                 <p>Weight: {kilosToPounds(character.mass)}</p>
             </div>
+            </Collapse>
         </div>
     )
 }
