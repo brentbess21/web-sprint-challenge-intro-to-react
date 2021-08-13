@@ -28,13 +28,18 @@ const App = () => {
       })
   },[])
 
-  console.log("This is character list", characterList);
+  const getFilteredChars = () => {
+    const filteredChars = characterList.filter(char => {
+      return char.name.toLowerCase().includes(searchTerm.toLowerCase())
+    })
+    return filteredChars;
+  }
 
   return (
     <div className="App">
-      <Search />
+      <Search setSearchTerm={setSearchTerm} />
       <h1 className="Header">Star Wars Characters</h1>
-      <CharacterList characterList={characterList}/>
+      <CharacterList characterList={getFilteredChars()}/>
     </div>
   );
 }
